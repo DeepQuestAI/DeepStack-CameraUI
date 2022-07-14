@@ -36,17 +36,18 @@ For more information check the documentation https://docs.deepstack.cc/
 
 The camera address can be a webCam or IP camera
 
-- **WebCam** : Specify 0, 1 or the index of the camera as the camera address if you are using a WebCam or any other cable connected to your local machine (for Ubuntu, the camera index start from -1 )
+**WebCam** : Specify 0, 1 or the index of the camera as the camera address if you are using a WebCam or any other cable connected to your local machine (for Ubuntu, the camera index start from -1 )
 
-- **IP camera**:  IP camera URL can require credentials or not. A sample is which doesn't have/require other credentials is http://180.234.23.1:9090/video and a sample which requires credentials is http://username:password@180.234.23.1:9090/video.
+**IP camera** :  IP camera URL can require credentials or not. A sample is which doesn't have/require other credentials is`http://180.234.23.1:9090/video` and a sample which requires credentials is`http://username:password@180.234.23.1:9090/video`.
 
 Supply all the information related to his IP canera such **User name**, **password**, **IP address**, **port** and **media**.
 
-- _User name_: A string to identify oneself i.e: nikeo, paul 
-- _Password_ can be anything.
-- _IP address_ *: the Internet Protocol of the camera should be in the format `192.168.1.199`
-- _Port_ * : represents the LAN port i.e: 8900, 8081
-- _Video stream path_: used to access the ip camera video can be `video` or `media` etc.
+-
+  - _User name_: A string to identify oneself i.e: nikeo, paul 
+  - _Password_: can be anything.
+  - _IP address_ *: the Internet Protocol of the camera should be in the format `192.168.1.199`
+  - _Port_ * : represents the LAN port i.e: 8900, 8081
+  - _Video stream path_: used to access the ip camera video can be `video` or `media` etc.
 
 The terms ending with * are **compulsory**.
 
@@ -80,8 +81,6 @@ The definition here
 
 Here the user can decide to receive the images of the live detection through the webhook URL or not.
 
-
-
 ## Run Deepstack-CameraUI
 To run this streamlit application **locally** , follow these steps 
 
@@ -98,10 +97,10 @@ streamlit run app.py
 
 * step 2 : Load the application and configure the settings
 
-- Select your API
-- Insert deepstack URL
-- Insert your camera address (0 for Webcam, -1 on Ubuntu or IP camera address)
-- Press on Start button
+  - Select your API
+  - Insert deepstack URL
+  - Insert your camera address (0 for Webcam, -1 on Ubuntu or IP camera address)
+  - Press on Start button
 
 Now a real-time detection deom your camera feed would be displayed in the main app interface.
 
