@@ -66,7 +66,7 @@ This widget accepts the name of the custom model, its is optional only required 
 
 * **Start**
 
-This button to click on to begin the program execution.
+This button should be clicked on to begin the program execution.
 
 * **Webhook URL**
 
