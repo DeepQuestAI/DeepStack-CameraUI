@@ -1,0 +1,8 @@
+deepstack-sdk
+streamlit
+opencv-python
+numpy 
+pillow
+requests
+
+
