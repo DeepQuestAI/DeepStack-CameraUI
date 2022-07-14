@@ -1,60 +1,6 @@
 # DeepStack-CameraUI
 DeepStack-CameraUI is a real-time computer vision web-application. Powered by Deepstack and Streamlit, this application performs realtime AI processing such as **object detection**, **face recognition**, **face detection** and **custom detection** on video frames from WebCam, Wired Camera or IP camera through an interactive web interface.
 
-## DeepStack-CameraUI Interface
-The interface of this web application is composed of two sections the **side-bar** which is the place where all configurations are set up and the **main interface** where the live detections are displayed.
-
-### Deepstack-CameraUI Settings
-The side-bar compresses different elements detailed below:
-
-* **Choose the APIs**
-
-This widject allows you to select which API techniques delivered by this application to run among the following **object detection**, **face recognition**, **face registration**, **face deregistration**, **face detection** and **custom detection**.
-
-* **DeepStack URL**
-
-To connect to Deepstack server the user must provide the right URL to Deepstack like `http://localhost:80` or `http://localhost:5670` depending on the URL port. 
-Fro more information check the documentation https://docs.deepstack.cc/
-
-* **Camera Address**
-
-This is the crucial part of this application, the user must supply all the information related to his IP canera such **User name**, **password**, **IP address**, **port** and **media**.
-
-- User name: A string to identify oneself i.e: nikeo, paul 
-- Password can be anything.
-- IP address *: the Internet Protocol of the camera should be in the format `192.168.1.199`
-- Port* : represents the LAN port i.e: 8900, 8081
-- Video stream path: used to access the ip camera video can be `video` or `media` etc.
-
-The terms ending with * are **compulsory**.
-
-When the user has a password and name, the camera address should have the following format
-```
-admin:password@IP Address:Port/Video stream path
-```
-Otherwise,
-```
-IP Address:Port/Video stream path
-```
-
-
-* **Custom Model Name**
-
-This widget accepts the name of the custom model, its is optional only required when custom detection is selected.
-
-* **Webhook URL**
-
-The URL inputted will receive the detailed informations about the content of the detections being captured in real-time and the api running.
-
-* **Webhook Api Key**
-
-The definition here
-
-* **Webhook Forward Images**
-
-Here the user can decide to receive the images of the live detection through the webhook URL or not.
-
-
 ## Installations 
 
 In order to install **Python 3.8** depending on any operating system 
@@ -70,17 +16,94 @@ In order to install all the application's dependencies, run this command:
 pip install -r requiremnets.txt
 ```
 
-## Run Web Application
-To run this streamlit application **locally** , execute the following command in the app folder
 
-First run Deepstack with all the apis if you prefer
+## DeepStack-CameraUI Interface
+The interface of this web application is composed of two sections the **side-bar** which is the place where all configurations are set up and the **main interface** where the live detections are displayed.
+
+### Deepstack-CameraUI Settings
+The side-bar compresses different elements detailed below:
+
+* **Choose the APIs**
+
+This widject allows you to select which API techniques delivered by this application to run among the following **object detection**, **face recognition**, **face registration**, **face deregistration**, **face detection** and **custom detection**.
+
+* **DeepStack URL**
+
+To connect to Deepstack server the user must provide the right URL to Deepstack like `http://localhost:80` or `http://localhost:5670` depending on the URL port. 
+For more information check the documentation https://docs.deepstack.cc/
+
+* **Camera Address**
+
+The camera address can be a webCam or IP camera
+
+- **WebCam** : Specify 0, 1 or the index of the camera as the camera address if you are using a WebCam or any other cable connected to your local machine (for Ubuntu, the camera index start from -1 )
+
+- **IP camera**:  IP camera URL can require credentials or not. A sample is which doesn't have/require other credentials is http://180.234.23.1:9090/video and a sample which requires credentials is http://username:password@180.234.23.1:9090/video.
+
+Supply all the information related to his IP canera such **User name**, **password**, **IP address**, **port** and **media**.
+
+- _User name_: A string to identify oneself i.e: nikeo, paul 
+- _Password_ can be anything.
+- _IP address_ *: the Internet Protocol of the camera should be in the format `192.168.1.199`
+- _Port_ * : represents the LAN port i.e: 8900, 8081
+- _Video stream path_: used to access the ip camera video can be `video` or `media` etc.
+
+The terms ending with * are **compulsory**.
+
+When the user has a password and name, the camera address should have the following format
 ```
-deepstack --VISION-DETECTION True --VISION-FACE True --MODELSTORE-DETECTION "path to the custom action model" --PORT 80
+http://admin:password@IP Address:Port/Video stream path
 ```
-Then navigate to the src folder and run the streamlit app using :
+Otherwise,
+```
+http://IP Address:Port/Video stream path
+```
+Kindly paste your IP camera URL into your browser to confirm it is loading the live feed before feeding into DeepStack-CameraUI.
+
+* **Custom Model Name**
+
+This widget accepts the name of the custom model, its is optional only required when **custom detection** is selected.
+
+* **Start**
+
+This button to click on to begin the program execution.
+
+* **Webhook URL**
+
+The URL inputted will receive the detailed informations about the content of the detections being captured in real-time and the raw input video frames as base64.
+
+* **Webhook Api Key**
+
+The definition here
+
+* **Webhook Forward Images**
+
+Here the user can decide to receive the images of the live detection through the webhook URL or not.
+
+
+
+## Run Deepstack-CameraUI
+To run this streamlit application **locally** , follow these steps 
+
+* Step 1 : Run deepstack and streamlit
+
+Execute the following command in the app folder, first run Deepstack with this command:
+```
+docker run -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+```
+Check [Deepstack Documantation](https://docs.deepstack.cc/) ,then navigate to the src folder and run the streamlit app using :
 ```
 streamlit run app.py
 ```
+
+* step 2 : Load the application and configure the settings
+
+- Select your API
+- Insert deepstack URL
+- Insert your camera address (0 for Webcam, -1 on Ubuntu or IP camera address)
+- Press on Start button
+
+Now a real-time detection deom your camera feed would be displayed in the main app interface.
 
 ## Deepstack-CameraUI Techniques
 Deepstack-CameraUI delivers real-time detection through these six different techniques.
