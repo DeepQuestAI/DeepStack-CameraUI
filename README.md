@@ -1,7 +1,7 @@
 # DeepStack-CameraUI
 DeepStack-CameraUI is a real-time computer vision web-application. Powered by Deepstack and Streamlit, this application performs realtime AI processing such as **object detection**, **face recognition**, **face detection** and **custom detection** on video frames from WebCam, Wired Camera or IP camera through an interactive web interface.
 
-## Installation
+# Installation
 
 To run DeepStack-CameraUI, you need to install the following:
 * **Python 3.8** 
@@ -14,7 +14,7 @@ To run DeepStack-CameraUI, you need to install the following:
 * Clone the reporsitory 
 * Install the dependencies by navigating into the project repository with `pip install -r requiremnets.txt`
 
-## Run Deepstack-CameraUI
+# Run DeepStack-CameraUI
 To run this streamlit application **locally** , follow these steps 
 
 * Step 1 : Run deepstack and streamlit
@@ -37,10 +37,10 @@ streamlit run app.py
 
 Now a real-time detection deom your camera feed would be displayed in the main app interface.
 
-## DeepStack-CameraUI Interface
+# DeepStack-CameraUI Interface
 The interface of this web application is composed of two sections the **side-bar** which is the place where all configurations are set up and the **main interface** where the live detections are displayed.
 
-### Deepstack-CameraUI Settings
+## Deepstack-CameraUI Settings
 The side-bar compresses different elements detailed below:
 
 * **Choose the APIs**
@@ -49,7 +49,7 @@ This widject allows you to select which API techniques delivered by this applica
 
 * **DeepStack URL**
 
-To connect to Deepstack server you must provide the right URL to Deepstack like `http://localhost:80` or or any other `url:port` on which DeepStack is running, locally or on the cloud. 
+To connect to Deepstack server you must provide the right URL to Deepstack like `http://localhost:80` or any other `url:port` on which DeepStack is running, locally or on the cloud. 
 For more information check the documentation https://docs.deepstack.cc/
 
 * **Camera Address**
@@ -101,8 +101,8 @@ The definition here
 
 Here you can decide to receive the images of the live detection through the webhook URL or not.
 
-## Deepstack-CameraUI Techniques
-Deepstack-CameraUI delivers real-time detection through these six different techniques.
+# DeepStack-CameraUI Techniques
+DeepStack-CameraUI delivers real-time detection through these six different techniques.
 
 ### Object detection
 The object detection API locates and classifies 80 different kinds of objects in a live streaming.
@@ -161,7 +161,7 @@ To test the custom detection API, you can make use of  a custom model built by D
 calling etc.
 
 
-## Run Deeptsack-CameraUI with Webhook
+# Run DeepStack-CameraUI with Webhook
 A webhook is a lightweight API that power one-way data transmission and trigger by event. In our case, this API is trigger when the webhook URL is defined,
 this webhook goal's is to transfer in real-time all the detections captured through any above mentioned APIs to a recipient.
 
@@ -170,17 +170,15 @@ This API is is dependent to few components which are:
 - **Webhook API Key**: the webhook api personal key , it is optional
 - **Webhook Forward Images**:  a function to send detection images to the receipient. it is optioanal.
 
-To run the webhook, Kindly install [Flask](https://flask.palletsprojects.com/en/2.0.x/installation/) and run the following commands:
 
-- **DeepStack-CameraUI**
+To run DeepStack-CameraUI with webhook, kindly install [Flask](https://flask.palletsprojects.com/en/2.0.x/installation/) and run the following steps:
 
-Move to the src folder and run the streamlit script with `streamlit run app.py`
+1. Move to the src folder and run the streamlit script with `streamlit run app.py`
 
-- **Flask**
 
-Move the script folder, insert `http://127.0.0.1:5000/webhook ` in the app webhook URL widget and run this command `flask run`.
+2. Move the script folder, insert `http://127.0.0.1:5000/webhook ` in the app webhook URL widget and run this command `flask run`.
 
-The detection would be vissible from the flask app terminal.
+The live detections would displayed on the flask app terminal.
 
 
 
