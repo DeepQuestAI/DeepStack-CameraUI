@@ -17,27 +17,31 @@ To run DeepStack-CameraUI, you need to install the following:
 # Run DeepStack-CameraUI
 To run DeepStack-CameraUI, follow these steps :
 
-* Step 1 : Run deepStack 
+* Step 1 : Run DeepStack 
+
   * First run deepstack with this command:
+  
 ```
-docker run -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
-```
-
-Check [Deepstack Documantation](https://docs.deepstack.cc/) ,then navigate to the src folder and run the streamlit app using :
-
-* * Navigate to the src folder and run the app using the command:
-```
-streamlit run app.py
+        docker run -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
 ```
 
-Then go to your browser to load the app by visiting the link `https://localhost:8501`.
-* step 2 :  Configure settings and start Detection
+Check [DeepStack Documentation](https://docs.deepstack.cc/) for more options.
+
+* * Navigate to the src folder and run the app using the command:        
+
+```
+        streamlit run app.py
+```
+       
+* * Then go to your browser to load the app by visiting the link `https://localhost:8501`.
+
+* Step 2 :  Configure settings and start Detection
   * Select your API
   * Enter Deepstack URL (E.g: `http://localhost:80`)
   * Enter your camera address 
     * For a WebCam, it will be 0 Windows and -1 on Ubuntu
     * For IP Camera, type in the full address of video stream for the camera (E.g `http://192.43.51.1:9091/video`)
-  - Press the **Start** button
+  * Press on **Start** button
 
 Now you will see real-time detection and video feed from your camera displayed in the main app interface.
 
@@ -176,10 +180,9 @@ This API is is dependent to few components which are:
 
 
 To run DeepStack-CameraUI with webhook,
-1. kindly install [Flask](https://flask.palletsprojects.com/en/2.0.x/installation/) 
-2. Move the **script** folder, Install the periquisites using `pip install -r requirements.txt`
-3. Run the flasK app with `flask run`.
-4. Insert `http://127.0.0.1:5000/webhook ` as  webhook URL on Deepstack-cameraUI and click on **Start**.
+1. Navgigate the **script** folder and nstall the dependencies using this command `pip install -r requirements.txt`
+2. Run the flasK app with `flask run`.
+3. Insert `http://127.0.0.1:5000/webhook ` as  webhook URL on Deepstack-cameraUI and click on **Start**.
 
 The live detections would displayed on the flask app terminal.
 
