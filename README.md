@@ -15,25 +15,29 @@ To run DeepStack-CameraUI, you need to install the following:
 * Install the dependencies by navigating into the project repository with `pip install -r requiremnets.txt`
 
 # Run DeepStack-CameraUI
-To run this streamlit application **locally** , follow these steps 
+To run DeepStack-CameraUI, follow these steps :
 
-* Step 1 : Run deepstack and streamlit
-
-Execute the following command in the app folder, first run Deepstack with this command:
+* Step 1 : Run deepStack 
+  * First run deepstack with this command:
 ```
 docker run -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
 ```
+
 Check [Deepstack Documantation](https://docs.deepstack.cc/) ,then navigate to the src folder and run the streamlit app using :
+
+* * Navigate to the src folder and run the app using the command:
 ```
 streamlit run app.py
 ```
 
-* step 2 : Load the application and configure the settings
-
-  - Select your API
-  - Insert deepstack URL
-  - Insert your camera address (0 for Webcam, -1 on Ubuntu or IP camera address)
-  - Press on **Start** button
+Then go to your browser to load the app by visiting the link `https://localhost:8501`.
+* step 2 :  Configure settings and start Detection
+  * Select your API
+  * Enter Deepstack URL (E.g: `http://localhost:80`)
+  * Enter your camera address 
+    * For a WebCam, it will be 0 Windows and -1 on Ubuntu
+    * For IP Camera, type in the full address of video stream for the camera (E.g `http://192.43.51.1:9091/video`)
+  - Press the **Start** button
 
 Now you will see real-time detection and video feed from your camera displayed in the main app interface.
 
@@ -66,7 +70,7 @@ Supply all the information related to his IP canera such as **User name**, **pas
   - _User name_: A string to identify oneself i.e: nikeo, paul 
   - _Password_: can be anything.
   - _IP address_ *: the Internet Protocol of the camera should be in the format `192.168.1.199`
-  - _Port_ * : represents the LAN port i.e: 8900, 8081
+  - _Port_ * : represents the LAN port E.g: 8900, 8081
   - _Video stream path_: used to access the ip camera video can be `video` or `media` etc.
 
 The terms ending with * are **compulsory**.
