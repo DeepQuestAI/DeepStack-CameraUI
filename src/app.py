@@ -28,8 +28,9 @@ st.markdown(
 # sidebar components
 
 logo = Image.open("deepstack_logo.png")
-app_logo = logo.resize((100, 100))
+app_logo = logo.resize((90, 90))
 st.sidebar.image(app_logo)
+
 
 st.sidebar.title("Settings")
 selected_box = st.sidebar.selectbox(
@@ -47,7 +48,7 @@ custom_name = st.sidebar.text_input("Custom Model Name  (Optional)", placeholder
 run = st.sidebar.button('Start >>>')
 
 webhook_url = st.sidebar.text_input("WebHook URL (Optional)", placeholder="your Webhook url")
-webhook_api_key = st.sidebar.text_input("WebHook API Key (Optional)", placeholder="your API key")
+webhook_api_key = st.sidebar.text_input("WebHook API Key (Optional)", placeholder="your API key", type="password")
 
 webhook_forward_images = st.sidebar.selectbox('Webhook Forward Images (Optional)', ('False', 'True'))
 
@@ -56,9 +57,12 @@ webhook_data = {}
 
 
 def welcome(title):
-    app_logo2 = logo.resize((40, 40))
-    st.image(app_logo2)
-    st.header(f"DeepStack-CameraUI {title}")
+    col10, col20 = st.columns([0.2,3])
+    with col10:
+        app_logo2 = logo.resize((50, 60))
+        st.image(app_logo2)
+    with col20:
+        st.header(f"DeepStack-CameraUI {title}")
     st.text("Configure the Camera and DeepStack API in the sidebar")
     st.text("The Camera and Detections will show below")
 
@@ -78,13 +82,16 @@ def uuid_generator():
 def run_webhook():
     global webhook_data
     global webhook_triggered
+    headersAuth = {
+        'Authorization':  str(webhook_api_key)
+    }
 
     while True:
         if webhook_data and webhook_triggered and len(list(webhook_data)) > 0:
             queued_data_values_batch = list(webhook_data.values())
             webhook_data.clear()
             try:
-                requests.post(webhook_url, json=queued_data_values_batch)
+                requests.post(webhook_url, headers=headersAuth, json=queued_data_values_batch)
             except:
                 st.error("Webhook URL Unavailable ")
         time.sleep(1)
