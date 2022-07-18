@@ -35,22 +35,22 @@ streamlit run app.py
   - Insert your camera address (0 for Webcam, -1 on Ubuntu or IP camera address)
   - Press on **Start** button
 
-Now a real-time detection deom your camera feed would be displayed in the main app interface.
+Now you will see real-time detection and video feed from your camera displayed in the main app interface.
 
 # DeepStack-CameraUI Interface
-The interface of this web application is composed of two sections the **side-bar** which is the place where all configurations are set up and the **main interface** where the live detections are displayed.
+The interface of this web application is composed of two sections;  the **side-bar** which is the place where all configurations are set up and the **main interface** where the live detections are displayed.
 
 ## Deepstack-CameraUI Settings
 The side-bar compresses different elements detailed below:
 
 * **Choose the APIs**
 
-This widject allows you to select which API techniques delivered by this application to run among the following **object detection**, **face recognition**, **face registration**, **face deregistration**, **face detection** and **custom detection**.
+This widgect allows you to select which API techniques delivered by this application to run among the following **object detection**, **face recognition**, **face registration**, **face deregistration**, **face detection** and **custom detection**.
 
 * **DeepStack URL**
 
 To connect to Deepstack server you must provide the right URL to Deepstack like `http://localhost:80` or any other `url:port` on which DeepStack is running, locally or on the cloud. 
-For more information check the documentation https://docs.deepstack.cc/
+For more information check [Deepstack documentation](https://docs.deepstack.cc/)
 
 * **Camera Address**
 
@@ -114,7 +114,7 @@ docker run -e VISION-DETECTION=True -v localstorage:/datastore -p 80:5000 deepqu
 ```
 
 ### Face detection
-The face detection API aims at identifying a face in the real-time live streaming.
+The face detection API aims at detecting faces in the real-time live streaming.
 To use this API, you need to enable the detection API when starting DeepStack with docker through this command
 
 ```
@@ -122,7 +122,7 @@ docker run -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai
 ```
 
 ### Face Registration
-The face Registration API goal's is to allow you to enroll a person's name and image on Deepstack server for future use like face recognition. The face recognition API is dependent of this API.
+The face Registration API goal's is to allow you to enroll a person's name or id and image on Deepstack server for future use like face recognition. The face recognition API is dependent of this API.
 
 To use this API, you need to enable the face API when starting DeepStack with docker through this command
 
@@ -140,7 +140,7 @@ docker run -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai
 ```
 
 ### Face Recognition
-The face recognition API goal's is to identify a face that has been previously register on Deepstack server, when it fails to recognize a face it portaits it as an **Unknown** face in the live stream.
+The face recognition API goal's is to identify faces by their name or id, as previously registered to DeepStack server, when it fails to recognize a face it defaults it to **Unknown** face in the live stream.
 To use this API, you need to enable the face API when starting DeepStack with docker through this command
 
 
@@ -149,7 +149,7 @@ docker run -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai
 ```
 
 ### Custom detection
-The custom detection API allows you to perform detection on personal/ specific object. To acheive this, your must prepare your own dataset, trained model , deplayed model and store these elements into a folder.
+The custom detection API allows you to perform detection on personal/ specific object. To learn more about training custom model check this [documentation](https://docs.deepstack.cc/custom-models/index.html).
 
 To activate this API, you need to enable the detection API when starting DeepStack with docker through this command
 
@@ -157,7 +157,7 @@ To activate this API, you need to enable the detection API when starting DeepSta
 docker run -v /path-to/custom-models-folder:/modelstore/detection -p 80:5000 deepquestai/deepstack
 ```
 
-To test the custom detection API, you can make use of  a custom model built by DeepStack called **[ActionNet](https://github.com/OlafenwaMoses/DeepStack_ActionNET)** to detection human actions such as eating, reading, 
+To test the custom detection API, you can make use of  a custom model built by DeepStack called **[Logo Detection](https://github.com/OlafenwaMoses/DeepStack_OpenLogo)** to detection human actions such as eating, reading, 
 calling etc.
 
 
@@ -171,12 +171,11 @@ This API is is dependent to few components which are:
 - **Webhook Forward Images**:  a function to send detection images to the receipient. it is optioanal.
 
 
-To run DeepStack-CameraUI with webhook, kindly install [Flask](https://flask.palletsprojects.com/en/2.0.x/installation/) and run the following steps:
-
-1. Move to the src folder and run the streamlit script with `streamlit run app.py`
-
-
-2. Move the script folder, insert `http://127.0.0.1:5000/webhook ` in the app webhook URL widget and run this command `flask run`.
+To run DeepStack-CameraUI with webhook,
+1. kindly install [Flask](https://flask.palletsprojects.com/en/2.0.x/installation/) 
+2. Move the **script** folder, Install the periquisites using `pip install -r requirements.txt`
+3. Run the flasK app with `flask run`.
+4. Insert `http://127.0.0.1:5000/webhook ` as  webhook URL on Deepstack-cameraUI and click on **Start**.
 
 The live detections would displayed on the flask app terminal.
 
