@@ -10,7 +10,7 @@ def index():
 
 @app.route("/webhook", methods=['POST'])
 def webhook():
-    token = request.headers.get("Autorization")
+    token = request.headers.get("Authorization")
     if token:
         print("the token : ", token)
     print("the webhook data : ", request.json)
